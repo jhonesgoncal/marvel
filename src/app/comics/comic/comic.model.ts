@@ -2,7 +2,7 @@ export interface Comic{
   id: string
   title: string
   thumbnail: string
-  // deliveryEstimate: string
+  description: string 
   // rating: number
   // imagePath: string
 }
