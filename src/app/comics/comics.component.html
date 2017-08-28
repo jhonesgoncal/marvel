@@ -1,0 +1,18 @@
+ <!-- INíCIO do CONTEÚDO -->
+      <section class="content-header">
+        <h1>
+          Todos os Comics
+        </h1>
+      </section>
+
+
+      <section class="content">
+
+        <div class="row">
+                <div class="col-sm-6 col-xs-12" *ngFor="let comic of comics">
+                  <mr-comic [comic]="comic"></mr-comic>
+                </div>
+                <!-- /.col -->
+        </div>
+      </section>
+  <!-- FIM  do CONTEÚDO -->
