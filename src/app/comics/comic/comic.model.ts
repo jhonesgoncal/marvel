@@ -1,6 +1,9 @@
 export class Comic{
   id: string
   title: string
-  thumbnail: string
-  description: string 
+  thumbnail: object
+  description: string
+  characters : object
+  stories: object
+  events: object
 }
