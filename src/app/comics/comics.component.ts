@@ -10,7 +10,7 @@ import {ComicsService} from './comics.service'
 
 export class ComicsComponent implements OnInit {
 
-  comics: Comic[] = []
+  comics: Comic[];
 
   constructor(private comicsService: ComicsService) { }
 

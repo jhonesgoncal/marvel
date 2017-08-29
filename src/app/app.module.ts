@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule , LOCALE_ID} from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -11,7 +11,8 @@ import {ROUTES} from './app.routes';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { ComicComponent } from './comics/comic/comic.component' 
-import { ComicsService} from './comics/comics.service'
+import { ComicsService} from './comics/comics.service';
+import { ComicDetailComponent } from './comic-detail/comic-detail.component'
 
 
 @NgModule({
@@ -21,14 +22,15 @@ import { ComicsService} from './comics/comics.service'
     ComicsComponent,
     HeaderComponent,
     AboutComponent,
-    ComicComponent
+    ComicComponent,
+    ComicDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ComicsService],
+  providers: [ComicsService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

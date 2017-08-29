@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { Comic } from './comic.model'
 
+
 @Component({
   selector: 'mr-comic',
   templateUrl: './comic.component.html',
@@ -13,6 +14,7 @@ export class ComicComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
