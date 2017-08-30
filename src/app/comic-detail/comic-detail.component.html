@@ -26,12 +26,23 @@
                   </dl>
                 </div>
                 <!-- /.box-body -->
+                <div class="box-footer detail-footer">
+                  <a class="pull-left " routerLinkActive="detail-active" [routerLink]="['characters']">
+                   Characteres
+                  </a>
+                  <a class="pull-right" routerLinkActive="detail-active"  [routerLink]="['stories']">
+                    Stories
+                  </a>
+                </div>
                 
               </div>
             </div>
             <!-- /.col-xs-12 -->
 
         </div>
+      <div class="row">
+            <router-outlet></router-outlet>
+      </div>
 
       </section>
 <!-- FIM DO CONTEÚDO -->
