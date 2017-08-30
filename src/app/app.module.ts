@@ -12,7 +12,10 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { ComicComponent } from './comics/comic/comic.component' 
 import { ComicsService} from './comics/comics.service';
-import { ComicDetailComponent } from './comic-detail/comic-detail.component'
+import { ComicDetailComponent } from './comic-detail/comic-detail.component';
+import { CharactersComponent } from './comic-detail/characters/characters.component';
+import { StoriesComponent } from './comic-detail/stories/stories.component';
+import { CharactersItemComponent } from './comic-detail/characters-item/characters-item.component'
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { ComicDetailComponent } from './comic-detail/comic-detail.component'
     HeaderComponent,
     AboutComponent,
     ComicComponent,
-    ComicDetailComponent
+    ComicDetailComponent,
+    CharactersComponent,
+    StoriesComponent,
+    CharactersItemComponent
   ],
   imports: [
     BrowserModule,
