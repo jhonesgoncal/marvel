@@ -36,6 +36,12 @@ export class ComicsService{
         .map(response => response.json().data.results)
     }
 
+    eventsOfComic(id: string): Observable<any>{
+        console.log(`${MEAT_API}/${id}/events${this.geraHashEComplementoDaUrl()}`)
+        return this.http.get(`${MEAT_API}/${id}/events${this.geraHashEComplementoDaUrl()}`)
+        .map(response => response.json().data.results)
+    }
+
 
     geraHashEComplementoDaUrl():string{
          let ts:number = 	new Date().getTime()

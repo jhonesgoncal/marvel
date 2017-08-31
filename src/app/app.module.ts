@@ -15,7 +15,8 @@ import { ComicsService} from './comics/comics.service';
 import { ComicDetailComponent } from './comic-detail/comic-detail.component';
 import { CharactersComponent } from './comic-detail/characters/characters.component';
 import { StoriesComponent } from './comic-detail/stories/stories.component';
-import { CharactersItemComponent } from './comic-detail/characters-item/characters-item.component'
+import { CharactersItemComponent } from './comic-detail/characters-item/characters-item.component';
+import { EventsComponent } from './comic-detail/events/events.component'
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CharactersItemComponent } from './comic-detail/characters-item/characte
     ComicDetailComponent,
     CharactersComponent,
     StoriesComponent,
-    CharactersItemComponent
+    CharactersItemComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
