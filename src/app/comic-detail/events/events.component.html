@@ -1,10 +1,7 @@
 
 <div class="col-xs-12 col-sm-6" >
-    <div *ngIf="!stories.length" style="display: none">
-      <p class="text-center">Nao ha stories para esse comic!</p>
-    </div>
-    <div *ngIf="!stories.length">
-      <div class="menu-item-info-box caixa" *ngFor="let item of stories | async" >
+    <div>
+      <div class="menu-item-info-box caixa" *ngFor="let item of events | async" >
         <div class="menu-item-info-box-content">
           <span class="menu-item-info-box-text">{{item?.title}}</span>
           <span class="menu-item-info-box-detail">{{item?.description}}</span>
@@ -14,5 +11,3 @@
     </div>  
       
 </div>
-
-

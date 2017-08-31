@@ -4,11 +4,16 @@
     margin:10px;
 }
 .caixa{
-    width: 500px;
+    width: 800px;
     height: 142px;
 }
 
 img{
     height: 120px;
     width: 120px;
+}
+.texto{
+    text-align: left;
+    margin: 10px;
+    margin-right: 10px;
 }
