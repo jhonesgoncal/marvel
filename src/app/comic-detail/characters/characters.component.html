@@ -1,5 +1,7 @@
 <div class="col-md-9 col-xs-12">
 
-  <mr-characters-item></mr-characters-item>
+  <mr-characters-item *ngFor="let item of character | async"
+  [characterItem] = "item"></mr-characters-item>
+  
 
 </div>

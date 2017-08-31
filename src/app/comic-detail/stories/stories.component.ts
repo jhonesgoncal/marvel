@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable'
 })
 export class StoriesComponent implements OnInit {
 
-  stories: Observable<any>
+  stories: Observable<any[]>
   constructor(private comicsService: ComicsService,
               private route : ActivatedRoute) { }
 

@@ -32,7 +32,7 @@ export class ComicsService{
     }
 
     characterOfComic(id: string): Observable<CharacterItem[]>{
-        return this.http.get(`${MEAT_API}/${id}/character${this.geraHashEComplementoDaUrl()}`)
+        return this.http.get(`${MEAT_API}/${id}/characters${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results)
     }
 

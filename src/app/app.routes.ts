@@ -13,7 +13,7 @@ export const ROUTES: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'comics/:id', component: ComicDetailComponent,
      children:[
-      {path: '', redirectTo: 'menu', pathMatch: 'full'},
+      {path: '', redirectTo: 'characters', pathMatch: 'full'},
       {path: 'characters', component: CharactersComponent},
       {path: 'stories', component: StoriesComponent}
   ]}

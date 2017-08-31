@@ -12,6 +12,7 @@ export class CharactersItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
