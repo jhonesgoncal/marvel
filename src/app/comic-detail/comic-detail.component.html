@@ -22,7 +22,8 @@
 
                   <dl class="col-sm-9 col-xs-12">
                     <dt>Descrição:</dt>
-                    <dd>{{comic?.description}}</dd>
+                    <dd *ngIf="comic?.description">{{comic?.description}}</dd>
+                    <dd *ngIf="comic?.description === null">Não há descrição</dd>
                   </dl>
                 </div>
                 <!-- /.box-body -->
