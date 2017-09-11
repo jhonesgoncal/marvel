@@ -3,6 +3,7 @@
 body {
   color: #555;
   overflow-y: auto;
+  background-color: #eeece7;
 }
 
 .box-header {
@@ -256,4 +257,25 @@ body {
 
 .has-error-block {
   color: red;
+}
+
+
+.carregando{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,.7);
+  overflow-y: hidden;
+  overflow-y: hidden !important;
+  z-index: 9999;
+}
+.carregando-imagem{
+  position: absolute;
+  top: 45%;
+  left: 43%;
+  color: black;
+  z-index: 10000;
 }
