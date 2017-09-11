@@ -18,12 +18,9 @@ div .imagem{
     top: -10000px;
     left: -10000px;
     background-color: rgba(192,192,192,.5);
-    overflow-y: hidden;
-    overflow-y: hidden !important;
     z-index: 1;
+    overflow: hidden;
 }
-
-
 .carregando-frase{
     position: absolute;
     top: 45%;

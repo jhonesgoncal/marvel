@@ -19,14 +19,14 @@ export class ComicsService{
     }
 
     comicById(id: string): Observable<Comic>{
-        this.http.get(`${MEAT_API}/${id}${this.geraHashEComplementoDaUrl()}`)
-        .map(response => console.log(response.json().data.results))
         return this.http.get(`${MEAT_API}/${id}${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results)
   
     }
 
     storiesOfComic(id: string): Observable<any>{
+        this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
+        .map(response => console.log(response.json().data.results))
         return this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results)
     }
@@ -36,7 +36,9 @@ export class ComicsService{
         .map(response => response.json().data.results)
     }
 
-    eventsOfComic(id: string): Observable<any>{
+    creatorsOfComic(id: string): Observable<any>{
+        this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
+        .map(response => console.log(response.json().data.results))
         return this.http.get(`${MEAT_API}/${id}/creators${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results);
        

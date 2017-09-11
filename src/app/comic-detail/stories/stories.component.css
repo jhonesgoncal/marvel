@@ -6,3 +6,6 @@
     color: black;
     z-index: 1;
 }
+.card-item-info-box-content{
+    margin-left: 10px; 
+}

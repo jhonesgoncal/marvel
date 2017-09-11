@@ -6,7 +6,7 @@ import {ComicsComponent} from './comics/comics.component'
 import {ComicDetailComponent} from './comic-detail/comic-detail.component'
 import {CharactersComponent} from './comic-detail/characters/characters.component'
 import {StoriesComponent} from './comic-detail/stories/stories.component'
-import {EventsComponent} from './comic-detail/events/events.component'
+import {CreatorsComponent} from './comic-detail/creators/creators.component'
 
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +16,7 @@ export const ROUTES: Routes = [
      children:[
       {path: '', redirectTo: 'characters', pathMatch: 'full'},
       {path: 'characters', component: CharactersComponent},
-      {path: 'events', component: EventsComponent},
+      {path: 'creators', component: CreatorsComponent},
       {path: 'stories', component: StoriesComponent}
   ]}
 ]

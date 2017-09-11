@@ -16,7 +16,7 @@ import { ComicDetailComponent } from './comic-detail/comic-detail.component';
 import { CharactersComponent } from './comic-detail/characters/characters.component';
 import { StoriesComponent } from './comic-detail/stories/stories.component';
 import { CharactersItemComponent } from './comic-detail/characters-item/characters-item.component';
-import { EventsComponent } from './comic-detail/events/events.component'
+import { CreatorsComponent } from './comic-detail/creators/creators.component'
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { EventsComponent } from './comic-detail/events/events.component'
     CharactersComponent,
     StoriesComponent,
     CharactersItemComponent,
-    EventsComponent
+    CreatorsComponent
   ],
   imports: [
     BrowserModule,

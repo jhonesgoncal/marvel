@@ -2,16 +2,14 @@
 
 body {
   color: #555;
+  overflow-y: auto;
 }
 
 .box-header {
   color: inherit;
 }
 
-/*
- * Component: Place Info Box
- * -------------------
- */
+
 .place-info-box {
   color: #555;
   display: block;
@@ -76,8 +74,7 @@ body {
   width: 80%;
   float: left
 }
-.place-info-box-text {
-}
+
 
 .place-info-box-star {
   display: block;
@@ -97,7 +94,7 @@ body {
   margin: 0;
 }
 
-/* Detail For restaurant */
+/* Detail For comics */
 
 .box-img-detail {
     width: 180px;
@@ -112,7 +109,7 @@ body {
  * Component: Menu Item
  * -------------------
  */
-.menu-item-info-box {
+.card-item-info-box {
   color: #555;
   display: block;
   min-height: 120px;
@@ -122,22 +119,22 @@ body {
   border-radius: 2px;
   margin-bottom: 15px;
 }
-.menu-item-info-box small {
+.card-item-info-box small {
   font-size: 14px;
 }
-.menu-item-info-box .progress {
+.card-item-info-box .progress {
   background: rgba(0, 0, 0, 0.2);
   margin: 5px -10px 5px -10px;
   height: 2px;
 }
-.menu-item-info-box .progress,
-.menu-item-info-box .progress .progress-bar {
+.card-item-info-box .progress,
+.card-item-info-box .progress .progress-bar {
   border-radius: 0;
 }
-.menu-item-info .progress .progress-bar {
+.card-item-info .progress .progress-bar {
   background: #fff;
 }
-.menu-item-info-box-icon {
+.card-item-info-box-icon {
   border-top-left-radius: 2px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -149,33 +146,33 @@ body {
   text-align: center;
   background: rgba(0, 0, 0, 0.2);
 }
-.menu-item-info-box-icon > img {
+.card-item-info-box-icon > img {
   max-width: 100%;
   /*border-right: 1px solid rgba(0, 0, 0, 0.1);*/
 }
-.menu-item-info-box-price {
+.card-item-info-box-price {
   font-weight: bold;
   margin-right: 20px;
   font-size: 16px;
 }
 
-.menu-item-info-box-content {
+.card-item-info-box-content {
   padding: 5px 10px;
   margin-left: 120px;
 }
 
-.menu-item-info-box-content a {
+.card-item-info-box-content a {
   cursor: pointer;
 }
 
-.menu-item-info-box-detail {
+.card-item-info-box-detail {
   display: block;
   font-size: 14px;
   margin-bottom: 15px;
   width: 100%;
 }
 
-.menu-item-info-box-text {
+.card-item-info-box-text {
   display: block;
   font-size: 18px;
   font-weight: bold;
@@ -186,10 +183,9 @@ body {
   text-transform: uppercase;
   width: 80%;
 }
-.menu-item-info-box-text {
-}
 
-.menu-item-info-box-more {
+
+.card-item-info-box-more {
   display: block;
 }
 
@@ -234,7 +230,7 @@ body {
   font-weight: bold;
 }
 
-/*rstaurant detail*/
+/*comics detail*/
 
 .detail-footer{
   padding:0px

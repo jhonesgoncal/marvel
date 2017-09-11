@@ -11,9 +11,9 @@
     </div>
     <div>
       <div *ngFor="let item of stories" >
-        <div class="menu-item-info-box caixa"  *ngIf="!item.title !== ''">
-          <div class="menu-item-info-box-content">
-            <span class="menu-item-info-box-text">{{item?.title}}</span>
+        <div class="card-item-info-box caixa"  *ngIf="!item.title !== ''">
+          <div class="card-item-info-box-content">
+            <span class="card-item-info-box-text">{{item?.title}} - {{item?.type}}</span>
           </div>
         <div>
       </div>
