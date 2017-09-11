@@ -10,12 +10,13 @@ import { Observable } from 'rxjs/Observable'
 })
 export class EventsComponent implements OnInit {
 
-  events: Observable<any[]>
+  events: any[]
   constructor(private comicsService: ComicsService,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-      this.events = this.comicsService.eventsOfComic(this.route.parent.snapshot.params['id'])
+      this.comicsService.eventsOfComic(this.route.parent.snapshot.params['id'])
+      .subscribe(creators => this.events = creators);
   }
 
 }

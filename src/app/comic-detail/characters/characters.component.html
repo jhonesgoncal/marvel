@@ -1,12 +1,19 @@
 <div class="col-xs-12 col-sm-6">
-
-  <div *ngIf="character.length === 0">
-      <p class="text-center">Nao ha character para esse comic!</p>
+  
+  <div *ngIf="!character" class="carregando">
+  </div>
+  <div *ngIf="!character"  class="carregando-frase">
+    <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
   </div>
   
-  <div *ngIf="character.length > 0">
-    <mr-characters-item *ngFor="let item of character | async"
-    [characterItem] = "item"></mr-characters-item>
-  </div>
+  
 
+  <div *ngIf="character">
+    <mr-characters-item *ngFor="let item of character"
+    [characterItem] = "item"></mr-characters-item>
+  
+    <div *ngIf="!character?.length">
+      <p class="text-sem-character">Nao ha character</p>
+    </div>
+  </div>  
 </div>

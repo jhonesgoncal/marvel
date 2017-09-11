@@ -1,0 +1,8 @@
+
+.carregando-frase{
+    position: absolute;
+    top: 1rem;
+    left: 100%;
+    color: black;
+    z-index: 1;
+}

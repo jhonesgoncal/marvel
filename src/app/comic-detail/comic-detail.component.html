@@ -1,4 +1,10 @@
 <!-- INÍCIO DO CONTEÚDO -->
+
+      <div *ngIf="!comic" class="carregando">
+      </div>
+      <div *ngIf="!comic"  class="carregando-frase">
+        <img src="assets/img/loading.gif" alt="" class="img-fluid">
+      </div>
       <section class="content-header">
         <h1>
 
@@ -27,18 +33,17 @@
                   </dl>
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer detail-footer">
-                  <a class="pull-left " routerLinkActive="detail-active" [routerLink]="['characters']">
-                   Characters
-                  </a>
-                  <a class="pull-right" routerLinkActive="detail-active"  [routerLink]="['stories']">
-                    Stories
-                  </a>
-                  <a class="pull-right " routerLinkActive="detail-active"  [routerLink]="['events']">
-                      events
-                  </a>
-                </div>
-                
+                  <div class="box-footer detail-footer">
+                    <a class="pull-left " routerLinkActive="detail-active" [routerLink]="['characters']">
+                    Characters
+                    </a>
+                    <a class="pull-right" routerLinkActive="detail-active"  [routerLink]="['stories']">
+                      Stories
+                    </a>
+                    <a class="pull-right " routerLinkActive="detail-active"  [routerLink]="['events']">
+                        events
+                    </a>
+                  </div>
               </div>
             </div>
             <!-- /.col-xs-12 -->

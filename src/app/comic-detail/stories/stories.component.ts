@@ -16,7 +16,8 @@ export class StoriesComponent implements OnInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-      this.stories = this.comicsService.storiesOfComic(this.route.parent.snapshot.params['id'])
+      this.comicsService.storiesOfComic(this.route.parent.snapshot.params['id'])
+      .subscribe(stories => this.stories = stories)
   }
 
 }

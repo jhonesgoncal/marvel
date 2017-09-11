@@ -1,13 +1,24 @@
 
 <div class="col-xs-12 col-sm-6" >
-    <div>
-      <div class="menu-item-info-box caixa" *ngFor="let item of events | async" >
-        <div class="menu-item-info-box-content">
-          <span class="menu-item-info-box-text">{{item?.title}}</span>
-          <span class="menu-item-info-box-detail">{{item?.description}}</span>
-          <span class="menu-item-info-box-price"></span>
+      <div *ngIf="!events" class="carregando">
         </div>
-      <div>
-    </div>  
-      
+        <div *ngIf="!events"  class="carregando-frase">
+          <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
+        </div>
+      <div *ngIf="events">  
+      <div *ngFor="let item of events" >
+          <div class="menu-item-info-box caixa">
+              <span class="menu-item-info-box-icon imagem">
+                <img src="{{item?.thumbnail?.path}}.{{item?.thumbnail?.extension}}">
+              </span>
+        
+              <div class="menu-item-info-box-content">
+                <span class="menu-item-info-box-text">{{item?.fullName}}</span>
+              </div>
+              <!-- /.info-box-content -->
+          </div>
+      </div>
+      <div *ngIf="!events?.length">
+        <p class="text-sem-character">Nao ha creators</p>
+      </div>
 </div>

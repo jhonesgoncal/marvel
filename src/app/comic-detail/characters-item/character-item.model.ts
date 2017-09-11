@@ -1,5 +1,5 @@
-export interface CharacterItem{
+export class CharacterItem{
   id: string
-  name: string
+  name: string 
   thumbnail: object
 }

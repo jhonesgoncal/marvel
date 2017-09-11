@@ -1,0 +1,11 @@
+
+.carregando-frase{
+    position: absolute;
+    top: 1rem;
+    left: 100%;
+    color: black;
+}
+
+.text-sem-character{
+    font-size: 2rem;
+}

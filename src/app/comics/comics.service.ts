@@ -37,9 +37,9 @@ export class ComicsService{
     }
 
     eventsOfComic(id: string): Observable<any>{
-        console.log(`${MEAT_API}/${id}/events${this.geraHashEComplementoDaUrl()}`)
-        return this.http.get(`${MEAT_API}/${id}/events${this.geraHashEComplementoDaUrl()}`)
-        .map(response => response.json().data.results)
+        return this.http.get(`${MEAT_API}/${id}/creators${this.geraHashEComplementoDaUrl()}`)
+        .map(response => response.json().data.results);
+       
     }
 
 

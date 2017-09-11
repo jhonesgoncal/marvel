@@ -10,14 +10,18 @@ import { Observable } from 'rxjs/Observable'
   styleUrls: ['./characters.component.css']
 })
 export class CharactersComponent implements OnInit {
-    character: Observable<CharacterItem[]>
+    character: CharacterItem[]
 
   constructor(private comicsService: ComicsService,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-      this.character = this.comicsService
+      this.comicsService
       .characterOfComic(this.route.parent.snapshot.params['id'])
+      .subscribe(character => this.character = character)
+
+      console.log(this.character)
   }
 
+  
 }
