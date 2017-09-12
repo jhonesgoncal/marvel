@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/Observable'
 })
 export class CharactersComponent implements OnInit {
     character: CharacterItem[]
+    id : any
 
   constructor(private comicsService: ComicsService,
               private route : ActivatedRoute) { }
@@ -20,7 +21,7 @@ export class CharactersComponent implements OnInit {
       .characterOfComic(this.route.parent.snapshot.params['id'])
       .subscribe(character => this.character = character)
 
-      console.log(this.character)
+      this.id = this.route.parent.snapshot.params['id']
   }
 
   
