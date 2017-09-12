@@ -273,9 +273,55 @@ body {
   z-index: 9999;
 }
 .carregando-imagem{
-  position: absolute;
+  position: fixed;
   top: 45%;
   left: 43%;
   color: black;
   z-index: 10000;
+}
+.text-aviso-not{
+  font-size: 60px;
+  color: black;
+  margin-left: 50%; 
+  width: 100%;
+  text-align: center;
+}
+
+.carol{
+  margin-top: 5%;
+  animation: pulse_animation 2s;
+  animation-name: pulse_animation;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-delay: initial;
+  animation-iteration-count: infinite;
+  animation-direction: initial;
+  animation-fill-mode: initial;
+  animation-play-state: initial;
+  -webkit-animation-iteration-count: infinite;
+  margin-left: 60%;
+}
+
+@keyframes pulse_animation {
+  30%{
+    -webkit-transform:scale(1);
+  }
+  40%{
+    -webkit-transform:scale(1.03);
+  }
+  50%{
+    -webkit-transform:scale(1);
+  }
+  60%{
+    -webkit-transform:scale(1);
+  }
+  70%{
+    -webkit-transform:scale(1.01);
+  }
+  80%{
+    -webkit-transform:scale(1);
+  }
+  100%{
+    -webkit-transform:scale(1);
+  }
 }
