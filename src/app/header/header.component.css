@@ -49,3 +49,8 @@ a{
 .mt{
     margin-top: 7px !important;
 }
+.botao{
+    background-color: #222;
+    color:#fff;
+    height: 34px;
+}
