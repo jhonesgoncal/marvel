@@ -1,1 +1,20 @@
 
+.search-bar{
+    opacity: 0;
+    max-height: 0px;
+}
+
+.searchTerm{
+    margin-right: 5px;
+}
+#imagemDeAviso{
+    margin-left: 0;
+}
+
+#imagemDeAviso p{
+    margin-left: 0%;
+}
+
+#imagemDeAviso img{
+    margin-left: 35%;
+}

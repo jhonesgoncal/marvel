@@ -13,13 +13,17 @@ export class ComicsService{
     constructor(private http: Http){}
     
 
-    comics(): Observable<Comic[]>{
-        return this.http.get(`${MEAT_API}${this.geraHashEComplementoDaUrl()}`)
+    comics(search?: string): Observable<Comic[]>{
+        if(search){
+            return this.http.get(`${MEAT_API}?titleStartsWith=${search}&${this.geraHashEComplementoDaUrl()}`)
+            .map(response => response.json().data.results)
+        }
+        return this.http.get(`${MEAT_API}?limit=100&${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results)
     }
 
     comicById(id: string): Observable<Comic>{
-        return this.http.get(`${MEAT_API}/${id}${this.geraHashEComplementoDaUrl()}`)
+        return this.http.get(`${MEAT_API}/${id}?${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results)
   
     }
@@ -27,19 +31,19 @@ export class ComicsService{
     storiesOfComic(id: string): Observable<any>{
         this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
         .map(response => console.log(response.json().data.results))
-        return this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
+        return this.http.get(`${MEAT_API}/${id}/stories?${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results)
     }
 
     characterOfComic(id: string): Observable<CharacterItem[]>{
-        return this.http.get(`${MEAT_API}/${id}/characters${this.geraHashEComplementoDaUrl()}`)
+        return this.http.get(`${MEAT_API}/${id}/characters?${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results)
     }
 
     creatorsOfComic(id: string): Observable<any>{
         this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
         .map(response => console.log(response.json().data.results))
-        return this.http.get(`${MEAT_API}/${id}/creators${this.geraHashEComplementoDaUrl()}`)
+        return this.http.get(`${MEAT_API}/${id}/creators?${this.geraHashEComplementoDaUrl()}`)
         .map(response => response.json().data.results);
        
     }
@@ -51,6 +55,6 @@ export class ComicsService{
          const PRIVATE_KEY : string = '0f58ef56308890fca54f7c27129208333677efdf'
          let hash = Md5.hashStr(`${ts}${PRIVATE_KEY}${APIKEY}`)
 
-         return `?ts=${ts}&apikey=${APIKEY}&hash=${hash}`
+         return `ts=${ts}&apikey=${APIKEY}&hash=${hash}`
     }
 }

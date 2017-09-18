@@ -326,3 +326,14 @@ body {
     -webkit-transform:scale(1);
   }
 }
+
+/*Barra de Busca de comics*/
+
+.search-link{
+  cursor: pointer;
+  color: #555;
+}
+
+.search-link:hover{
+  color: red;
+}
