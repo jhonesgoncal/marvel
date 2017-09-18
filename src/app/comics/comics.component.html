@@ -1,8 +1,10 @@
  <!-- INíCIO do CONTEÚDO -->
-
+      
       
       <div *ngIf="!comics"  class="carregando-imagem">
         <img src="assets/img/load.gif" alt="" class="img-fluid">
+      </div>
+      <div *ngIf="!comics" class="carregando">
       </div>
       <section class="content-header">
         <h1 class="titulo">
@@ -19,7 +21,7 @@
             <form [formGroup] = "searchForm">
               <div class="form-group">
                 <input type="text" #iptSearch formControlName="searchControl"
-                 class="form-control" placeholder="O que voce esta Procurando?">
+                 class="form-control" placeholder="Qual o comic que você esta procurando?">
               </div>
             </form>
           </div>
@@ -42,7 +44,7 @@
         </div>
 
         <div *ngIf="!comics?.length && iptSearch.value" id="imagemDeAviso">
-            <p class="text-aviso-not">Não há Comic para a Sua Busca</p>
+            <p class="text-aviso-not">Não há Comics para a Sua Busca</p>
             <img src="//i.annihil.us/u/prod/marvel/html_blocks_assets/capmarvel404/carol.png" alt="" class="carol">
         </div>
       </section>

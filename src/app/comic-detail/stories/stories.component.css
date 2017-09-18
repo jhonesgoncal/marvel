@@ -9,3 +9,9 @@
 .card-item-info-box-content{
     margin-left: 10px; 
 }
+.caixa{
+    height: 50px;
+}
+.card-item-info-box{
+    min-height: 50px;
+}
