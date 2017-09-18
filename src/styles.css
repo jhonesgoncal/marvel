@@ -5,10 +5,7 @@ body {
   overflow-y: auto;
   
 }
-.content-wrapper{
-  background-color: #222;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//+/JhAzIGMUDhRrYgigq4QbgyEAwgChmkuDn1MilAAAAABJRU5ErkJggg==")
-}
+
 
 .box-header {
   color: inherit;
