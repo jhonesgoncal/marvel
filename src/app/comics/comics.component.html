@@ -1,24 +1,51 @@
  <!-- INíCIO do CONTEÚDO -->
 
-      <div *ngIf="!comics" class="carregando">
-      </div>
+      
       <div *ngIf="!comics"  class="carregando-imagem">
         <img src="assets/img/load.gif" alt="" class="img-fluid">
       </div>
       <section class="content-header">
         <h1 class="titulo">
           Todos os Comics
+          <a class="search-link  pull-right" (click)="toggleSearch()">
+            <span *ngIf="iptSearch.value" class="searchTerm"><small>{{iptSearch.value}}</small></span>
+            <i class="fa fa-search"></i>
+          </a>
         </h1>
+
+        <!-- barra de busca -->
+        <div class="row">
+          <div class="col-xs-12 search-bar" [@toogleSearch] = "searchBarState">
+            <form [formGroup] = "searchForm">
+              <div class="form-group">
+                <input type="text" #iptSearch formControlName="searchControl"
+                 class="form-control" placeholder="O que voce esta Procurando?">
+              </div>
+            </form>
+          </div>
+        </div>
       </section>
+      
 
 
       <section class="content">
 
         <div class="row">
+           
                 <div class="col-sm-6 col-xs-12" *ngFor="let comic of comics">
                   <mr-comic [comic]="comic"></mr-comic>
-                </div>
-                <!-- /.col -->
+                  <div *ngIf="!comics"  class="carregando-frase">
+                      <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
+                    </div>
+                </div>     
+                       
+        </div>
+
+        <div *ngIf="!comics?.length && iptSearch.value" id="imagemDeAviso">
+            <p class="text-aviso-not">Não há Comic para a Sua Busca</p>
+            <img src="//i.annihil.us/u/prod/marvel/html_blocks_assets/capmarvel404/carol.png" alt="" class="carol">
         </div>
       </section>
+
+      
   <!-- FIM  do CONTEÚDO -->
