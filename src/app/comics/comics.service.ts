@@ -6,55 +6,36 @@ import {MEAT_API} from '../app.api'
 import {Observable} from 'rxjs/Observable'
 import {Md5} from 'ts-md5/dist/md5'
 import {CharacterItem} from '../comic-detail/characters-item/character-item.model'
+import {BaseService} from './../base.service'
 
 @Injectable()
 export class ComicsService{
    
-    constructor(private http: Http){}
+    constructor(private http: Http, private baseService : BaseService){}
     
 
     comics(search?: string): Observable<Comic[]>{
         if(search){
-            return this.http.get(`${MEAT_API}?titleStartsWith=${search}&${this.geraHashEComplementoDaUrl()}`)
-            .map(response => response.json().data.results)
+            return this.baseService.getApi(`?titleStartsWith=${search}&`)
         }
-        return this.http.get(`${MEAT_API}?limit=100&${this.geraHashEComplementoDaUrl()}`)
-        .map(response => response.json().data.results)
+        return this.baseService.getApi(`?limit=100&`)
     }
 
     comicById(id: string): Observable<Comic>{
-        return this.http.get(`${MEAT_API}/${id}?${this.geraHashEComplementoDaUrl()}`)
-        .map(response => response.json().data.results)
-  
+        return this.baseService.getApi(`/${id}?`)
     }
 
     storiesOfComic(id: string): Observable<any>{
-        this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
-        .map(response => console.log(response.json().data.results))
-        return this.http.get(`${MEAT_API}/${id}/stories?${this.geraHashEComplementoDaUrl()}`)
-        .map(response => response.json().data.results)
+        return this.baseService.getApi(`/${id}/stories?`)
     }
 
     characterOfComic(id: string): Observable<CharacterItem[]>{
-        return this.http.get(`${MEAT_API}/${id}/characters?${this.geraHashEComplementoDaUrl()}`)
-        .map(response => response.json().data.results)
+        return this.baseService.getApi(`/${id}/characters?`)
     }
 
     creatorsOfComic(id: string): Observable<any>{
-        this.http.get(`${MEAT_API}/${id}/stories${this.geraHashEComplementoDaUrl()}`)
-        .map(response => console.log(response.json().data.results))
-        return this.http.get(`${MEAT_API}/${id}/creators?${this.geraHashEComplementoDaUrl()}`)
-        .map(response => response.json().data.results);
+        return this.baseService.getApi(`/${id}/creators?`)
        
     }
 
-
-    geraHashEComplementoDaUrl():string{
-         let ts:number = 	new Date().getTime()
-         const APIKEY : string = '113fe8d9f18142601caca4864045c804'
-         const PRIVATE_KEY : string = '0f58ef56308890fca54f7c27129208333677efdf'
-         let hash = Md5.hashStr(`${ts}${PRIVATE_KEY}${APIKEY}`)
-
-         return `ts=${ts}&apikey=${APIKEY}&hash=${hash}`
-    }
 }

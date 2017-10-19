@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { ComicComponent } from './comics/comic/comic.component' 
 import { ComicsService} from './comics/comics.service';
+import { BaseService} from './base.service';
 import { ComicDetailComponent } from './comic-detail/comic-detail.component';
 import { CharactersComponent } from './comic-detail/characters/characters.component';
 import { StoriesComponent } from './comic-detail/stories/stories.component';
@@ -44,7 +45,7 @@ import { CreatorsComponent } from './comic-detail/creators/creators.component'
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ComicsService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [ComicsService, BaseService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
