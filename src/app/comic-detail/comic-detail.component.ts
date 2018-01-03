@@ -16,7 +16,8 @@ export class ComicDetailComponent implements OnInit {
 
   ngOnInit() {
     this.comicsService.comicById(this.router.snapshot.params['id'])
-    .subscribe(comicReq => this.comic = comicReq[0])
+    .then(response => 
+      this.comic = response.data.results[0])
     
   }
 

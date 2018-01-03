@@ -28,7 +28,8 @@ export class CreatorsComponent implements OnInit {
 
   ngOnInit() {
       this.comicsService.creatorsOfComic(this.route.parent.snapshot.params['id'])
-      .subscribe(creators => this.creators = creators);
+      .then(response => 
+        this.creators = response.data.results);
   }
 
 }

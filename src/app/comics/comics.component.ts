@@ -10,6 +10,7 @@ import 'rxjs/add/operator/distinctUntilChanged'
 import 'rxjs/add/operator/catch'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/observable/from'
+import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'mr-comics',
@@ -39,6 +40,7 @@ export class ComicsComponent implements OnInit {
 
   searchForm: FormGroup
   searchControl: FormControl
+  
 
   constructor(private comicsService: ComicsService, private fb: FormBuilder) { }
 
@@ -49,13 +51,15 @@ export class ComicsComponent implements OnInit {
     })
 
     this.searchControl.valueChanges
-    .debounceTime(500)
+    .debounceTime(300)
     .distinctUntilChanged()
-    .switchMap(searchTerm => this.comicsService.comics(searchTerm)
-      .catch(error=> Observable.from([])))
-    .subscribe(comics => this.comics = comics)
-    
-    this.comicsService.comics().subscribe(comics => this.comics = comics)
+    .switchMap(searchTerm => Observable.from(this.comicsService.comics(searchTerm).then(response => 
+      response.data.results))
+      .catch(error=> Promise.reject([])))
+      .subscribe(item => this.comics = item)
+
+    this.comicsService.comics().then(response => 
+      this.comics = response.data.results);
   }
 
   toggleSearch(){

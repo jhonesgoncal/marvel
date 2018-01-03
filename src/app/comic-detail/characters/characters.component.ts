@@ -18,7 +18,8 @@ export class CharactersComponent implements OnInit {
   ngOnInit() {
       this.comicsService
       .characterOfComic(this.route.parent.snapshot.params['id'])
-      .subscribe(character => this.character = character)
+      .then(response => 
+        this.character = response.data.results)
 
   }
 

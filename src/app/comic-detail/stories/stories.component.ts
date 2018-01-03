@@ -23,13 +23,14 @@ export class StoriesComponent implements OnInit {
 
   storieStates = 'ready'
 
-  stories: Observable<any[]>
+  stories: any[]
   constructor(private comicsService: ComicsService,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
       this.comicsService.storiesOfComic(this.route.parent.snapshot.params['id'])
-      .subscribe(stories => this.stories = stories)
+      .then(response => 
+        this.stories = response.data.results)
   }
 
 }

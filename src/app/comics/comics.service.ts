@@ -7,34 +7,36 @@ import {Observable} from 'rxjs/Observable'
 import {Md5} from 'ts-md5/dist/md5'
 import {CharacterItem} from '../comic-detail/characters-item/character-item.model'
 import {BaseService} from './../base.service'
+import MarvelWrapper from 'marvel-wrapper'
 
 @Injectable()
 export class ComicsService{
    
     constructor(private http: Http, private baseService : BaseService){}
     
+    private marvel = this.baseService.marvel();
 
-    comics(search?: string): Observable<Comic[]>{
+    comics(search?: string){
         if(search){
-            return this.baseService.getApi(`?titleStartsWith=${search}&`)
+            return this.marvel.comic.search(search);
         }
-        return this.baseService.getApi(`?limit=100&`)
+        return this.marvel.comic.getComics();
     }
 
-    comicById(id: string): Observable<Comic>{
-        return this.baseService.getApi(`/${id}?`)
+    comicById(id: string){
+        return this.marvel.comic.getComic(id);
     }
 
-    storiesOfComic(id: string): Observable<any>{
-        return this.baseService.getApi(`/${id}/stories?`)
+    storiesOfComic(id: string){
+        return this.marvel.comic.getStories(id);
     }
 
-    characterOfComic(id: string): Observable<CharacterItem[]>{
-        return this.baseService.getApi(`/${id}/characters?`)
+    characterOfComic(id: string){
+        return this.marvel.comic.getCharacters(id);
     }
 
-    creatorsOfComic(id: string): Observable<any>{
-        return this.baseService.getApi(`/${id}/creators?`)
+    creatorsOfComic(id: string){
+        return this.marvel.comic.getCreators(id);
        
     }
 
