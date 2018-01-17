@@ -16,5 +16,4 @@ export class BaseService{
             limit: 100
         });
     }
-
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import {trigger, state, style, transition, animate} from '@angular/animations'
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import { Comic} from './comic/comic.model'
+import {ActivatedRoute} from '@angular/router'
 import {ComicsService} from './comics.service'
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/do'
@@ -42,7 +43,7 @@ export class ComicsComponent implements OnInit {
   searchControl: FormControl
   
 
-  constructor(private comicsService: ComicsService, private fb: FormBuilder) { }
+  constructor(private comicsService: ComicsService, private fb: FormBuilder, private router : ActivatedRoute) { }
 
   ngOnInit() {
     this.searchControl = this.fb.control('')
@@ -57,9 +58,12 @@ export class ComicsComponent implements OnInit {
       response.data.results))
       .catch(error=> Promise.reject([])))
       .subscribe(item => this.comics = item)
+      
+      this.comicsService.comics().then(response => 
+        this.comics = response.data.results);
+  
 
-    this.comicsService.comics().then(response => 
-      this.comics = response.data.results);
+    
   }
 
   toggleSearch(){

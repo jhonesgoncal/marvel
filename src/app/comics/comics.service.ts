@@ -1,18 +1,15 @@
 import {Comic} from "./comic/comic.model"
 import {Injectable} from '@angular/core'
-import {Http} from '@angular/http'
 import 'rxjs/add/operator/map'
-import {MEAT_API} from '../app.api'
 import {Observable} from 'rxjs/Observable'
-import {Md5} from 'ts-md5/dist/md5'
 import {CharacterItem} from '../comic-detail/characters-item/character-item.model'
 import {BaseService} from './../base.service'
-import MarvelWrapper from 'marvel-wrapper'
+import { Http } from "@angular/http";
 
 @Injectable()
 export class ComicsService{
    
-    constructor(private http: Http, private baseService : BaseService){}
+    constructor(private baseService : BaseService, private http: Http){}
     
     private marvel = this.baseService.marvel();
 
@@ -40,4 +37,8 @@ export class ComicsService{
        
     }
 
+    myComics(){
+        return this.http.get('http://localhost:9999/comics')
+        .map(response => response.json().results)
+    }
 }

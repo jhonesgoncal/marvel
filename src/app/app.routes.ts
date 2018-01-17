@@ -11,6 +11,7 @@ import {CreatorsComponent} from './comic-detail/creators/creators.component'
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent},
   {path: 'comics', component: ComicsComponent},
+  {path: 'mycomics', component: ComicsComponent},
   {path: 'about', component: AboutComponent},
   {path: 'comics/:id', component: ComicDetailComponent,
      children:[

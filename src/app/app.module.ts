@@ -20,7 +20,8 @@ import { ComicDetailComponent } from './comic-detail/comic-detail.component';
 import { CharactersComponent } from './comic-detail/characters/characters.component';
 import { StoriesComponent } from './comic-detail/stories/stories.component';
 import { CharactersItemComponent } from './comic-detail/characters-item/characters-item.component';
-import { CreatorsComponent } from './comic-detail/creators/creators.component'
+import { CreatorsComponent } from './comic-detail/creators/creators.component';
+import { MycomicsComponent } from './mycomics/mycomics.component'
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CreatorsComponent } from './comic-detail/creators/creators.component'
     CharactersComponent,
     StoriesComponent,
     CharactersItemComponent,
-    CreatorsComponent
+    CreatorsComponent,
+    MycomicsComponent
   ],
   imports: [
     BrowserModule,
