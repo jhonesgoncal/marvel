@@ -39,6 +39,6 @@ export class ComicsService{
 
     myComics(){
         return this.http.get('http://localhost:9999/comics')
-        .map(response => response.json().results)
+        .map(response => response.json())
     }
 }

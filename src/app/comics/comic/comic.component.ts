@@ -26,7 +26,6 @@ export class ComicComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
   }
 
 }

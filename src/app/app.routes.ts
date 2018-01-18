@@ -7,11 +7,14 @@ import {ComicDetailComponent} from './comic-detail/comic-detail.component'
 import {CharactersComponent} from './comic-detail/characters/characters.component'
 import {StoriesComponent} from './comic-detail/stories/stories.component'
 import {CreatorsComponent} from './comic-detail/creators/creators.component'
+import { MycomicsComponent } from 'app/mycomics/mycomics.component';
+import { FormMycomicComponent } from 'app/mycomics/form-mycomic/form-mycomic.component';
 
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent},
   {path: 'comics', component: ComicsComponent},
-  {path: 'mycomics', component: ComicsComponent},
+  {path: 'mycomics', component: MycomicsComponent},
+  {path: 'form', component: FormMycomicComponent},
   {path: 'about', component: AboutComponent},
   {path: 'comics/:id', component: ComicDetailComponent,
      children:[
