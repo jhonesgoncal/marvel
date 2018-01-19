@@ -18,3 +18,6 @@
 #imagemDeAviso img{
     margin-left: 35%;
 }
+.btn-delete{
+    display: none !important;
+}

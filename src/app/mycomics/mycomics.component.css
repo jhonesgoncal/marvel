@@ -6,3 +6,17 @@
 .esconder{
   display: none;
 }
+.image-preview{
+  border: 2px dashed grey !important;
+  text-align: center !important;
+  background-color: #eaeaea;
+  height: 420px;
+  padding: 10px;
+}
+img{
+  max-width: 99%;
+  max-height: 99%;
+}
+.place-info-box{
+  margin-bottom: 5px !important; 
+}

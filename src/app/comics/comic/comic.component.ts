@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { Comic } from './comic.model'
 import {trigger, state, style, transition, animate} from '@angular/animations'
+import { ComicsService } from 'app/comics/comics.service';
 
 
 @Component({
@@ -22,10 +23,17 @@ export class ComicComponent implements OnInit {
   comicState = 'ready'
 
   @Input() comic: Comic
-
-  constructor() { }
+  @Input() myComics : boolean
+  constructor(private comicsService : ComicsService) { }
 
   ngOnInit() {
+    console.log(this.myComics)
+  }
+
+  async deleteComic(id){
+    console.log(id);
+    await this.comicsService.deleteComic(id).subscribe(response => console.log(response));
+    location.reload();
   }
 
 }

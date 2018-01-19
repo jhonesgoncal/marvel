@@ -13,3 +13,7 @@ div .imagem{
     text-align: left;
     margin: 10px;
 }
+.btn-delete{
+    margin-bottom: 10px;
+    margin-top: 0;
+}
