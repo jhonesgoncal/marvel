@@ -3,3 +3,6 @@
     font-size: 2em;
     border-bottom: 1px solid #e4e2e2;
 }
+.esconder{
+  display: none;
+}

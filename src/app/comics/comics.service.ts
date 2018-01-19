@@ -8,9 +8,9 @@ import { Http } from "@angular/http";
 
 @Injectable()
 export class ComicsService{
-   
+
     constructor(private baseService : BaseService, private http: Http){}
-    
+
     private marvel = this.baseService.marvel();
 
     comics(search?: string){
@@ -34,11 +34,16 @@ export class ComicsService{
 
     creatorsOfComic(id: string){
         return this.marvel.comic.getCreators(id);
-       
+
     }
 
     myComics(){
         return this.http.get('http://localhost:9999/comics')
-        .map(response => response.json())
+          .map(response => response.json())
+    }
+
+    registerComic(data){
+        return this.http.post('http://localhost:9999/comics', data)
+          .map(response => response.json())
     }
 }

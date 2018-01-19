@@ -1,6 +1,6 @@
  <!-- INíCIO do CONTEÚDO -->
-      
-      
+
+
 <div *ngIf="!comics"  class="carregando-imagem">
   <img src="assets/img/load.gif" alt="" class="img-fluid">
 </div>
@@ -12,23 +12,23 @@
       Todos os Comics
       <button class="btn btn-danger pull-right align-bottom" data-toggle="modal" data-target="#exampleModal">Adicionar comic</button>
     </h1>
-    
+
   </div>
-  
+
 </section>
 
 <section class="content">
 
   <div class="row">
-     
+
           <div class="col-sm-6 col-xs-12" *ngFor="let comic of comics">
             <script> console.log(comic)</script>
             <mr-comic [comic]="comic"></mr-comic>
             <div *ngIf="!comics"  class="carregando-frase">
                 <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
               </div>
-          </div>     
-                 
+          </div>
+
   </div>
 
 </section>
@@ -64,7 +64,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-danger" id="registerComic">Cadastrar</button>
+          <button type="submit" class="btn btn-danger" id="registerComic" (click)="registerComic($event)">Cadastrar</button>
         </div>
       </div>
     </div>

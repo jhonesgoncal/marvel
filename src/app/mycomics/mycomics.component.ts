@@ -22,33 +22,40 @@ export class MycomicsComponent implements OnInit {
     let registerComic = document.querySelector("#registerComic");
     this.comicsService.myComics().subscribe(comic => this.comics = comic);
 
-    registerComic.addEventListener("click", function(event){
-      event.preventDefault();
-      const titleComic  = (<HTMLInputElement>document.querySelector('#title-comic')).value;
-      const imageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
-      const descComic  = (<HTMLInputElement>document.querySelector('#desc-comic')).value;
-      //const image = Base64.encode(imageComic);
-      const extension = imageComic.value.split('.')[1]
-      //console.log(this.image)
-     
-      
-    });
 
   }
+
   getImagem(readerEvt, midia){
-    console.log('change no input file', readerEvt);
     let file = readerEvt.target.files[0];
     var reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = function () {
-        image = reader.result;
-        midia.binario = btoa(reader.result);
-        console.log('base64 do arquivo codificado',midia.binario);
+    reader.onload = async() => {
+        this.image = reader.result;
     };
-    reader.onerror = function (error) {
-        console.log('Erro ao ler a imagem : ', error);
-    };
-}
+  }
+
+  registerComic(event){
+     const titleComic  = (<HTMLInputElement>document.querySelector('#title-comic')).value;
+     const imageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
+     const descComic  = (<HTMLInputElement>document.querySelector('#desc-comic')).value;
+     const modal = document.querySelector("#exampleModal");
+     const extension = imageComic.value.split('.')[1];
+     console.log(this.image)
+
+     const data = {
+       title: titleComic,
+       description: descComic,
+       thumbnail: {
+         path: this.image,
+         extension: extension
+       }
+     }
+
+     this.comicsService.registerComic(data).subscribe(response => console.log(response));
+     this.comicsService.myComics().subscribe(comic => this.comics = comic);
+     modal.classList.add('esconder');
+
+  }
 
 
 }
