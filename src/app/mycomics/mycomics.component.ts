@@ -86,7 +86,7 @@ export class MycomicsComponent implements OnInit {
     let titleComic  = (<HTMLInputElement>document.querySelector('#title-comic'));
     let imageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
     let descComic  = (<HTMLInputElement>document.querySelector('#desc-comic'));
-    const imagePreview = (<HTMLImageElement>document.querySelector('#image-preview'));
+    const imagePreview = (<HTMLImageElement>document.querySelector('#imgPreview'));
 
     titleComic.value = '';
     imageComic.value = '';
