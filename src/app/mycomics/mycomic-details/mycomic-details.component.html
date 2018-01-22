@@ -1,0 +1,57 @@
+<!-- INÍCIO DO CONTEÚDO -->
+
+<div *ngIf="!comic" class="carregando">
+</div>
+<div *ngIf="!comic"  class="carregando-imagem">
+  <img src="assets/img/load.gif" alt="" class="img-fluid">
+</div>
+<section class="content-header">
+  <h1>
+
+  </h1>
+</section>
+
+<section class="content" >
+
+  <div class="row" *ngIf="comic">
+      <div class="col-xs-12">
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <i class="fa fa-home"></i>
+            <h3 class="box-title">{{comic?.title}}</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="col-sm-3 col-xs-12" *ngIf="comic">
+              <img class="box-img-detail imagem" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" />
+            </div>
+
+            <dl class="col-sm-9 col-xs-12">
+              <dt>Descrição:</dt>
+              <dd *ngIf="comic?.description">{{comic?.description}}</dd>
+              <dd *ngIf="comic?.description === null">Não há descrição</dd>
+            </dl>
+          </div>
+          <!-- /.box-body -->
+            <div class="box-footer detail-footer">
+              <a class="pull-left " routerLinkActive="detail-active" [routerLink]="['characters']">
+                Characters
+              </a>
+              <a class="pull-right" routerLinkActive="detail-active"  [routerLink]="['stories']">
+                Stories
+              </a>
+              <a class="pull-right " routerLinkActive="detail-active"  [routerLink]="['creators']">
+                Creators
+              </a>
+            </div>
+        </div>
+      </div>
+      <!-- /.col-xs-12 -->
+
+  </div>
+<div class="row">
+      <router-outlet></router-outlet>
+</div>
+
+</section>
+<!-- FIM DO CONTEÚDO -->

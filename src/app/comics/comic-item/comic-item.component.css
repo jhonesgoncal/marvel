@@ -1,0 +1,19 @@
+.place-info-box{
+    height: 200px;
+}
+div .imagem{
+    margin: 10px;
+    height: 180px;
+}
+.imagemOriginal{
+    height: 180px;
+}
+
+.texto{
+    text-align: left;
+    margin: 10px;
+}
+.btn-delete{
+    margin-bottom: 10px;
+    margin-top: 0;
+}

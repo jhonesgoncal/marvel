@@ -1,16 +1,8 @@
-<a [routerLink]="['/comics', comic.id]">
-  
-    <div class="place-info-box" [@comicAppeared]= 'comicState'>
-      <span class="place-info-box-icon imagem"><img class="img-responsive imagemOriginal" src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}"/></span>
-
-      <div class="place-info-box-content">
-        <span class="place-info-box-text ">{{comic.title}}</span><br>
-      </div>
-      <!-- /.info-box-content -->
-    </div>
-    <div *ngIf="!comic"  class="carregando-frase">
-        <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
-      </div>
+<a [routerLink]="['/comics', comic.id]" *ngIf="!myComics">
+    <mr-comic-item [comic]="comic"></mr-comic-item>
+</a>
+<a [routerLink]="['/mycomics', comic._id]" *ngIf="myComics">
+  <mr-comic-item [comic]="comic"></mr-comic-item>
 </a>
 <div *ngIf="myComics">
   <button  class="btn btn-danger btn-sm btn-delete pull-right" (click)="deleteComic(comic._id)">Excluir</button>

@@ -1,0 +1,12 @@
+div .imagem{
+    margin: 10px;
+    height: 250px;
+}
+
+.detail-active{
+    border-bottom: 2px solid red;
+}
+.detail-footer > a{
+    width: 33.3%;
+}
+

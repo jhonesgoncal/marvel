@@ -42,6 +42,11 @@ export class ComicsService{
           .map(response => response.json())
     }
 
+    myComicById(id){
+        return this.http.get(`http://localhost:9999/comics/${id}`)
+          .map(response => response.json())
+    }
+
     registerComic(data){
         return this.http.post('http://localhost:9999/comics', data)
           .map(response => response.json())
@@ -49,8 +54,6 @@ export class ComicsService{
     
     deleteComic(id){
         return this.http.delete(`http://localhost:9999/comics/${id}`)
-         .map(response => console.log(`http://localhost:9999/comics/${id}`))
-
-        
+         .map(response => console.log(`http://localhost:9999/comics/${id}`)) 
     }
 }
