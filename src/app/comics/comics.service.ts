@@ -56,4 +56,28 @@ export class ComicsService{
         return this.http.delete(`http://localhost:9999/comics/${id}`)
          .map(response => console.log(`http://localhost:9999/comics/${id}`)) 
     }
+
+    charactersByMyComic(id){
+        return this.http.get(`http://localhost:9999/comics/${id}/characters`)
+          .map(response => response.json());
+    }
+
+    creatorsByMyComic(id){
+        return this.http.get(`http://localhost:9999/comics/${id}/creators`)
+          .map(response => response.json());
+    }
+
+    storiesByMyComic(id){
+        return this.http.get(`http://localhost:9999/comics/${id}/stories`)
+          .map(response => response.json());
+    }
+
+    registerCharacterMyComic(data){
+        return this.http.post(`http://localhost:9999/characters`, data)
+        .map(response => response.json());
+    }
+    includeCharacterMyComic(id, data){
+        return this.http.patch(`http://localhost:9999/comics/${id}/characters`, data)
+        .map(response => response.json());
+    }
 }

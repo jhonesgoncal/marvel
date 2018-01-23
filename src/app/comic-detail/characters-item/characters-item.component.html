@@ -2,12 +2,12 @@
 <div>
   <div class="card-item-info-box caixa" [@characterItemAppeared] = "charactersItemStates">
       <span class="card-item-info-box-icon imagem">
-        <img src="{{characterItem.thumbnail.path}}.{{characterItem.thumbnail.extension}}">
+        <img src="{{characterItem?.thumbnail.path}}.{{characterItem?.thumbnail.extension}}">
       </span>
 
       <div class="card-item-info-box-content">
         <span class="card-item-info-box-text">{{characterItem.name}}</span>
-        <span class="card-item-info-box-detail texto" *ngIf="characterItem?.description !== ''">{{characterItem.description}}</span>
+        <span class="card-item-info-box-detail texto" *ngIf="characterItem?.description !== ''">{{characterItem?.description}}</span>
         <span class="card-item-info-box-detail texto" *ngIf="characterItem?.description === ''">Não há descrição</span>
         <span class="card-item-info-box-price"></span>
       </div>

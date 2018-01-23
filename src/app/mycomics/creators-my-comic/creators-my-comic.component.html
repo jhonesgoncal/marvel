@@ -1,0 +1,23 @@
+<div class="col-xs-12 col-sm-6" [@creatorsAppeared] = "creatorsStates">
+  <div *ngIf="!creators"  class="carregando-frase">
+    <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
+  </div>
+<div *ngIf="creators">  
+<div *ngFor="let item of creators" >
+    <div class="card-item-info-box caixa">
+        <span class="card-item-info-box-icon imagem">
+          <img src="{{item?.thumbnail?.path}}.{{item?.thumbnail?.extension}}">
+        </span>
+  
+        <div class="card-item-info-box-content">
+          <span class="card-item-info-box-text">{{item?.fullName}}</span>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+</div>
+<div *ngIf="!creators?.length">
+  <p class="text-aviso-not">Não há Creators</p>
+  <img src="//i.annihil.us/u/prod/marvel/html_blocks_assets/capmarvel404/carol.png" alt="" class="carol">
+</div>
+</div>
+

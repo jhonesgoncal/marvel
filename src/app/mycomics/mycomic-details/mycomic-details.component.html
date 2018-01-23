@@ -26,10 +26,17 @@
               <img class="box-img-detail imagem" src="{{comic?.thumbnail?.path}}.{{comic?.thumbnail?.extension}}" />
             </div>
 
-            <dl class="col-sm-9 col-xs-12">
+            <dl class="col-sm-7 col-xs-10">
               <dt>Descrição:</dt>
               <dd *ngIf="comic?.description">{{comic?.description}}</dd>
               <dd *ngIf="comic?.description === null">Não há descrição</dd>
+            </dl>
+            <dl class="col-sm-2 col-xs-2">
+              
+              <button class="btn btn-danger btn-add" data-toggle="modal" data-target="#exampleModal" (click)="showModal()" >Adicionar Caracter</button>
+              <button class="btn btn-danger btn-add">Adicionar Creator</button>
+              <button class="btn btn-danger btn-add">Adicionar Storie</button>
+              
             </dl>
           </div>
           <!-- /.box-body -->
@@ -55,3 +62,41 @@
 
 </section>
 <!-- FIM DO CONTEÚDO -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title title-modal">Cadastro Comic
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Titulo:</label>
+            <input type="text" class="form-control" id="name-character">
+          </div>
+          <div class="form-group">
+              <label for="message-text" class="col-form-label">Imagem:</label>
+              <input type="file" class="form-control" id="image-character" accept="image/*" (change)="getImagem($event, imagem)">
+          </div>
+          <div class="form-group image-preview">
+            <img src="#" alt="" class="hide img-fluid" id="imgPreview">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Descrição:</label>
+            <textarea class="form-control" id="desc-character"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-danger" data-dismiss="modal" id="registerComic" (click)="registerCharacter($event)">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>

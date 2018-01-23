@@ -1,0 +1,24 @@
+
+
+<div class="col-xs-12 col-sm-6" [@storieAppeared]="storieStates" height="30" >
+
+  <div *ngIf="!stories"  class="carregando-frase">
+      <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
+  </div>
+  <div *ngIf="stories">
+    <div >
+      <div *ngFor="let item of stories" >
+        <div class="card-item-info-box caixa">
+          <div class="card-item-info-box-content">
+            <span class="card-item-info-box-text">{{item?.title}} - {{item?.type}}</span>
+          </div>
+        <div>
+      </div>
+    </div>
+  </div> 
+  <div *ngIf="!stories?.length">
+    <p class="text-aviso-not text-editado">Não há Stories</p>
+    <img src="//i.annihil.us/u/prod/marvel/html_blocks_assets/capmarvel404/carol.png" alt="" class="carol">
+  </div> 
+  
+</div>

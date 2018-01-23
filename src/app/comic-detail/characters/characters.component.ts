@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import {ComicsService} from '../../comics/comics.service'
 import {CharacterItem} from '../characters-item/character-item.model'
@@ -11,17 +11,13 @@ import { Observable } from 'rxjs/Observable'
 })
 export class CharactersComponent implements OnInit {
     character: CharacterItem[]
-
   constructor(private comicsService: ComicsService,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-      this.comicsService
-      .characterOfComic(this.route.parent.snapshot.params['id'])
-      .then(response => 
-        this.character = response.data.results)
-
+        this.comicsService
+        .characterOfComic(this.route.parent.snapshot.params['id'])
+        .then(response => 
+          this.character = response.data.results)
   }
-
-  
 }

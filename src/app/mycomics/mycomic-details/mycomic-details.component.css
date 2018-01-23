@@ -10,3 +10,29 @@ div .imagem{
     width: 33.3%;
 }
 
+.btn-add{
+    margin: 5px;
+    width: 150px;
+}
+.title-modal{
+    font-weight: bold;
+    font-size: 2em;
+    border-bottom: 1px solid #e4e2e2;
+}
+.esconder{
+  display: none;
+}
+.image-preview{
+  border: 2px dashed grey !important;
+  text-align: center !important;
+  background-color: #eaeaea;
+  height: 420px;
+  padding: 10px;
+}
+img{
+  max-width: 99%;
+  max-height: 99%;
+}
+.place-info-box{
+  margin-bottom: 5px !important; 
+}

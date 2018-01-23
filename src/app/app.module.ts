@@ -24,7 +24,10 @@ import { CreatorsComponent } from './comic-detail/creators/creators.component';
 import { MycomicsComponent } from './mycomics/mycomics.component';
 import { FormMycomicComponent } from './mycomics/form-mycomic/form-mycomic.component';
 import { ComicItemComponent } from './comics/comic-item/comic-item.component';
-import { MycomicDetailsComponent } from './mycomics/mycomic-details/mycomic-details.component'
+import { MycomicDetailsComponent } from './mycomics/mycomic-details/mycomic-details.component';
+import { CharactersMyComicComponent } from './mycomics/characters-my-comic/characters-my-comic.component';
+import { CreatorsMyComicComponent } from './mycomics/creators-my-comic/creators-my-comic.component';
+import { StoriesMyComicComponent } from './mycomics/stories-my-comic/stories-my-comic.component'
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { MycomicDetailsComponent } from './mycomics/mycomic-details/mycomic-deta
     MycomicsComponent,
     FormMycomicComponent,
     ComicItemComponent,
-    MycomicDetailsComponent
+    MycomicDetailsComponent,
+    CharactersMyComicComponent,
+    CreatorsMyComicComponent,
+    StoriesMyComicComponent
   ],
   imports: [
     BrowserModule,

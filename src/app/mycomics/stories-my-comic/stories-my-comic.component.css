@@ -1,0 +1,21 @@
+
+.carregando-frase{
+    position: absolute;
+    top: 1rem;
+    left: 100%;
+    color: black;
+    z-index: 1;
+}
+.card-item-info-box-content{
+    margin-left: 10px; 
+}
+.caixa{
+    height: 50px;
+}
+.card-item-info-box{
+    min-height: 50px;
+}
+
+.text-editado{
+    margin-right: -500px;
+}
