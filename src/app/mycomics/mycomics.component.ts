@@ -9,6 +9,7 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 import {Observable} from "rxjs/Observable";
 import { style } from '@angular/core/src/animation/dsl';
 import { Response } from '@angular/http/src/static_response';
+import { MyComicService } from 'app/mycomics/mycomic.service';
 
 @Component({
   selector: 'mr-mycomics',
@@ -20,7 +21,7 @@ export class MycomicsComponent implements OnInit {
   comics: Comic[];
   myComics = true;
 
-  constructor(private comicsService: ComicsService, private fb: FormBuilder, private router : ActivatedRoute) { }
+  constructor(private comicsService: MyComicService, private fb: FormBuilder, private router : ActivatedRoute) { }
 
    ngOnInit() {
     let registerComic = document.querySelector("#registerComic");

@@ -28,6 +28,11 @@ import { MycomicDetailsComponent } from './mycomics/mycomic-details/mycomic-deta
 import { CharactersMyComicComponent } from './mycomics/characters-my-comic/characters-my-comic.component';
 import { CreatorsMyComicComponent } from './mycomics/creators-my-comic/creators-my-comic.component';
 import { StoriesMyComicComponent } from './mycomics/stories-my-comic/stories-my-comic.component'
+import { MyComicService } from 'app/mycomics/mycomic.service';
+import { CharacterService } from 'app/mycomics/character.service';
+import { MARVEL_API } from 'app/app.api';
+import { CreatorService } from 'app/mycomics/creator.service';
+import { StorieService } from 'app/mycomics/storie.service';
 
 
 @NgModule({
@@ -59,7 +64,7 @@ import { StoriesMyComicComponent } from './mycomics/stories-my-comic/stories-my-
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ComicsService, BaseService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [ComicsService, BaseService, MyComicService , CharacterService, CreatorService ,StorieService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

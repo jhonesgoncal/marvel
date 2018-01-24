@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Comic } from 'app/comics/comic/comic.model';
 import { ComicsService } from 'app/comics/comics.service';
 import { ActivatedRoute } from '@angular/router';
+import { MyComicService } from 'app/mycomics/mycomic.service';
+import { CharacterService } from 'app/mycomics/character.service';
+import { StorieService } from 'app/mycomics/storie.service';
 
 @Component({
   selector: 'mr-mycomic-details',
@@ -14,7 +17,10 @@ export class MycomicDetailsComponent implements OnInit {
   myComic = true
   image: any;
   id : any;
-  constructor(private comicsService : ComicsService, private router : ActivatedRoute) { }
+  constructor(private comicsService : MyComicService,
+              private  characterService : CharacterService, 
+              private storieService: StorieService,
+              private router : ActivatedRoute) { }
 
   ngOnInit() {
     this.comicsService.myComicById(this.router.snapshot.params['id']).subscribe(comic => this.comic = comic);
@@ -30,9 +36,6 @@ export class MycomicDetailsComponent implements OnInit {
         img.src = this.image;
         let imgAlt = (<HTMLElement>img);
         imgAlt.classList.remove('hide');
-        //img.width = 350;
-        //img.style.maxWidth = "520";
-        //img.height = 400;
         img.setAttribute("style", "max-width='500'")
         imagePreview.innerHTML = '';
         imagePreview.appendChild(imgAlt);
@@ -43,7 +46,7 @@ export class MycomicDetailsComponent implements OnInit {
      const nameCharacter  = (<HTMLInputElement>document.querySelector('#name-character')).value;
      const imageCharacter = (<HTMLInputElement>document.querySelector('#image-character'));
      const descCharacter  = (<HTMLInputElement>document.querySelector('#desc-character')).value;
-     const modal = document.querySelector("#exampleModal");
+     const modal = document.querySelector("#modalCharacter");
      const extension = imageCharacter.value.split('.')[1].toLowerCase();
      console.log(this.image)
 
@@ -55,18 +58,34 @@ export class MycomicDetailsComponent implements OnInit {
          extension: extension
        }
      }
-     await this.comicsService.registerCharacterMyComic(data).subscribe(character => {
+     await this.characterService.registerCharacterMyComic(data).subscribe(character => {
       const dataInclude = {
         character: character._id
       }
       console.log(character._id)
       this.comicsService.includeCharacterMyComic(this.router.snapshot.params['id'], dataInclude).subscribe(response => console.log(response))
      });
-     
-     
-     await 
+      
       this.closeModal()
   }
+
+  async registerStorie(event){
+    const titleStorie  = (<HTMLInputElement>document.querySelector('#title-storie')).value;
+    const modal = document.querySelector("#modalCharacter");
+
+    const data = {
+     title: titleStorie
+    }
+
+    await this.storieService.registerStorieMyComic(data).subscribe(storie => {
+     const dataInclude = {
+       storie: storie._id
+     }
+     this.comicsService.includeStorierMyComic(this.router.snapshot.params['id'], dataInclude).subscribe(response => console.log(response))
+    });
+    
+     this.closeModal()
+ }
 
   closeModal(){
     const modal = document.querySelector("#exampleModal");

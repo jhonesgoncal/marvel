@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core'
 import {Http} from '@angular/http'
-import {MEAT_API} from '././app.api'
 import {Observable} from 'rxjs/Observable'
 import {Md5} from 'ts-md5/dist/md5'
 import MarvelWrapper from 'marvel-wrapper'
