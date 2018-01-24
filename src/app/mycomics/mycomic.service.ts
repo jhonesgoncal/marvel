@@ -56,4 +56,9 @@ export class MyComicService{
         return this.http.patch(`${MARVEL_API}/comics/${id}/stories`, data)
         .map(response => response.json());
     }
+
+    includeCreatorMyComic(id, data){
+        return this.http.patch(`${MARVEL_API}/comics/${id}/creators`, data)
+        .map(response => response.json());
+    }
 }

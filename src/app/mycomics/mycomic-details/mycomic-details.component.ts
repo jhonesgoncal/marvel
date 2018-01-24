@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MyComicService } from 'app/mycomics/mycomic.service';
 import { CharacterService } from 'app/mycomics/character.service';
 import { StorieService } from 'app/mycomics/storie.service';
+import { CreatorService } from 'app/mycomics/creator.service';
 
 @Component({
   selector: 'mr-mycomic-details',
@@ -17,9 +18,11 @@ export class MycomicDetailsComponent implements OnInit {
   myComic = true
   image: any;
   id : any;
+  imageCreator: any
   constructor(private comicsService : MyComicService,
               private  characterService : CharacterService, 
               private storieService: StorieService,
+              private creatorService : CreatorService,
               private router : ActivatedRoute) { }
 
   ngOnInit() {
@@ -86,6 +89,52 @@ export class MycomicDetailsComponent implements OnInit {
     
      this.closeModal()
  }
+
+ async registerCreator(event){
+  const nameCreator  = (<HTMLInputElement>document.querySelector('#name-creator')).value;
+  const imgCreator = (<HTMLInputElement>document.querySelector('#image-creator'));
+  console.log(imgCreator.value)
+  const descCreator  = (<HTMLInputElement>document.querySelector('#desc-creator')).value;
+  const modal = document.querySelector("#modalCreator");
+  const extension = imgCreator.value.split('.')[1].toLowerCase();
+  console.log(extension);
+
+  
+  const data = {
+    fullName: nameCreator,
+    description: descCreator,
+    thumbnail: {
+      path: this.imageCreator,
+      extension: extension
+    }
+  }
+  await this.creatorService.registerCreatorMyComic(data).subscribe(creator => {
+   const dataInclude = {
+     creator: creator._id
+   }
+   this.comicsService.includeCreatorMyComic(this.router.snapshot.params['id'], dataInclude).subscribe(response => console.log(response))
+   
+  });
+   
+   this.closeModal()
+}
+
+getImagemCreator(readerEvt, midia){
+  let file = readerEvt.target.files[0];
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = async() => {
+      this.imageCreator = await reader.result;
+      const imagePreview = document.querySelector('#image-preview');
+      let img = (<HTMLImageElement>document.querySelector('#imgPreviewCreator'));
+      img.src = this.imageCreator;
+      let imgAlt = (<HTMLElement>img);
+      imgAlt.classList.remove('hide');
+      img.setAttribute("style", "max-width='500'")
+      imagePreview.innerHTML = '';
+      imagePreview.appendChild(imgAlt);
+  };
+}
 
   closeModal(){
     const modal = document.querySelector("#exampleModal");
