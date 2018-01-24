@@ -17,7 +17,7 @@ export class CreatorService{
     }
 
     deleteCreatorMyComic(id){
-        return this.http.delete(`${MARVEL_API}/creators`, id)
+        return this.http.delete(`${MARVEL_API}/creators/${id}`)
         .map(response => response.json());
     }
 }

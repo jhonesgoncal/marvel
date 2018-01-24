@@ -24,3 +24,8 @@
     left: 100%;
     color: black;
 }
+
+.btn-delete{
+    margin-bottom: 15px;
+    margin-left: 70%;
+}

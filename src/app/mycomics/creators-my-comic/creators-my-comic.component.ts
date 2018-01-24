@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { ComicsService } from 'app/comics/comics.service';
 import { ActivatedRoute } from '@angular/router';
+import { CreatorService } from 'app/mycomics/creator.service';
 
 @Component({
   selector: 'mr-creators-my-comic',
@@ -23,11 +24,16 @@ export class CreatorsMyComicComponent implements OnInit {
 
   creators: any[]
   constructor(private comicsService: ComicsService,
+              private creatorService : CreatorService,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
     this.comicsService.creatorsByMyComic(this.route.parent.snapshot.params['id']).subscribe(creator => this.creators = creator);
     console.log(this.creators);
   }
-
+  async deleteCreator(id){
+    console.log(id);
+    await this.creatorService.deleteCreatorMyComic(id).subscribe(response => console.log(response));
+    location.reload();
+  }
 }

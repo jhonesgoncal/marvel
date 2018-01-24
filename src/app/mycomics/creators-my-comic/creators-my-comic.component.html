@@ -13,7 +13,9 @@
           <span class="card-item-info-box-text">{{item?.fullName}}</span>
         </div>
         <!-- /.info-box-content -->
+        
     </div>
+    <button  class="btn btn-danger btn-sm btn-delete " (click)="deleteCreator(item._id)">Excluir</button>
 </div>
 <div *ngIf="!creators?.length">
   <p class="text-aviso-not">Não há Creators</p>
