@@ -9,7 +9,8 @@ import { ComicsService } from 'app/comics/comics.service';
   styleUrls: ['./characters-my-comic.component.css']
 })
 export class CharactersMyComicComponent implements OnInit {
-
+  myComic = true;
+  
   character: CharacterItem[]
   constructor(private comicsService: ComicsService,
               private route : ActivatedRoute) { }

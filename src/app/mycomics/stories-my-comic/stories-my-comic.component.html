@@ -6,15 +6,17 @@
       <img src="assets/img/loading.gif" alt="" class="img-fluid img" height="50" width="50">
   </div>
   <div *ngIf="stories">
-    <div >
-      <div *ngFor="let item of stories" >
+    <div *ngFor="let item of stories" class="card-item-new">
+      <div>
         <div class="card-item-info-box caixa">
           <div class="card-item-info-box-content">
             <span class="card-item-info-box-text">{{item?.title}} - {{item?.type}}</span>
           </div>
         <div>
       </div>
+      <button  class="btn btn-danger btn-sm btn-delete pull-right" (click)="deleteStorie(item._id)">Excluir</button>
     </div>
+    
   </div> 
   <div *ngIf="!stories?.length">
     <p class="text-aviso-not text-editado">Não há Stories</p>

@@ -1,5 +1,5 @@
 
-<div>
+<div class="card-item-character">
   <div class="card-item-info-box caixa" [@characterItemAppeared] = "charactersItemStates">
       <span class="card-item-info-box-icon imagem">
         <img src="{{characterItem?.thumbnail.path}}.{{characterItem?.thumbnail.extension}}">
@@ -12,5 +12,8 @@
         <span class="card-item-info-box-price"></span>
       </div>
       <!-- /.info-box-content -->
+  </div>
+  <div *ngIf="myComic">
+      <button  class="btn btn-danger btn-sm btn-delete pull-right" (click)="deleteCharacter(characterItem._id)">Excluir</button>
   </div>
 </div>

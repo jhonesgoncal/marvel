@@ -4,7 +4,7 @@
   </div>
   <div *ngIf="character">
     <mr-characters-item *ngFor="let item of character"
-    [characterItem] = "item"></mr-characters-item>
+    [characterItem] = "item" [myComic]= "myComic"></mr-characters-item>
   
     <div *ngIf="!character?.length">
       <p class="text-aviso-not">Não há Character</p>

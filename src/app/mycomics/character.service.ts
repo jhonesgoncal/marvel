@@ -17,7 +17,7 @@ export class CharacterService{
     }
 
     deleteCharacterMyComic(id){
-        return this.http.delete(`${MARVEL_API}/characters`, id)
+        return this.http.delete(`${MARVEL_API}/characters/${id}`)
         .map(response => response.json());
     }
 }

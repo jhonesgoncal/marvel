@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import {ComicsService} from '../../comics/comics.service'
 import { Observable } from 'rxjs/Observable'
 import {trigger, state, style, transition, animate} from '@angular/animations'
+import { StorieService } from 'app/mycomics/storie.service';
 
 
 @Component({
@@ -25,10 +26,17 @@ export class StoriesMyComicComponent implements OnInit {
 
   stories: any[] 
   constructor(private comicsService: ComicsService,
+              private storieService: StorieService,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
     this.comicsService.storiesByMyComic(this.route.parent.snapshot.params['id']).subscribe(storie => this.stories = storie);
+  }
+
+  async deleteStorie(id){
+    console.log(id);
+    await this.storieService.deleteStorieMyComic(id).subscribe(response => console.log(response));
+    location.reload();
   }
 
 }

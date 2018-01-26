@@ -17,3 +17,17 @@ div .imagem{
     margin-bottom: 10px;
     margin-top: 0;
 }
+.btn-edit{
+    margin-right: 10px; 
+}
+.image-preview{
+    border: 2px dashed grey !important;
+    text-align: center !important;
+    background-color: #eaeaea;
+    height: 420px;
+    padding: 10px;
+}
+img{
+    max-width: 99%;
+    max-height: 99%;
+}

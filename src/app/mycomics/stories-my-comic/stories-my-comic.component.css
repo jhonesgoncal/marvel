@@ -19,3 +19,13 @@
 .text-editado{
     margin-right: -500px;
 }
+
+.btn-delete{
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.card-item-new{
+    margin-bottom: 15px;
+    height: 85px;
+}

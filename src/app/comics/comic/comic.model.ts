@@ -1,7 +1,10 @@
 export class Comic{
-  id: string
+  _id: string
   title: string
-  thumbnail: object
+  thumbnail: {
+    path: string
+    extension: string
+  }
   description: string
   characters : object
   stories: object
