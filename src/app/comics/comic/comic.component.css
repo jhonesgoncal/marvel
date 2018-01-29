@@ -31,3 +31,8 @@ img{
     max-width: 99%;
     max-height: 99%;
 }
+.title-modal{
+    font-weight: bold;
+    font-size: 2em;
+    border-bottom: 1px solid #e4e2e2;
+}

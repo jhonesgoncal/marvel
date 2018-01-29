@@ -39,4 +39,26 @@ export class StoriesMyComicComponent implements OnInit {
     location.reload();
   }
 
+  editStorie(id){
+    let titleStorie  = (<HTMLInputElement>document.querySelector('#title-storie'));
+    let idStorie  = (<HTMLInputElement>document.querySelector('#id'));
+
+    this.storieService.getStorieMyComic(id).subscribe(response => {
+      titleStorie.value = response.title,
+      idStorie.value = response._id
+    })
+
+  }
+
+  updateStorie(event){
+    let titleStorie  = (<HTMLInputElement>document.querySelector('#title-storie'));
+    let idStorie  = (<HTMLInputElement>document.querySelector('#id'));
+
+    const data = {
+      title: titleStorie.value
+    }
+
+    this.storieService.updateStorieMyComic(idStorie.value, data).subscribe(response => console.log(response));
+    location.reload();
+  }
 }

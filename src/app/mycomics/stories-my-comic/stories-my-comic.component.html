@@ -14,7 +14,9 @@
           </div>
         <div>
       </div>
-      <button  class="btn btn-danger btn-sm btn-delete pull-right" (click)="deleteStorie(item._id)">Excluir</button>
+        <button  class="btn btn-danger btn-sm btn-delete pull-right" (click)="deleteStorie(item._id)">Excluir</button>
+        <button  class="btn btn-warning btn-sm btn-edit pull-right" data-toggle="modal" data-target="#modalStorieUpdate" (click)="editStorie(item._id)">Editar</button>
+      
     </div>
     
   </div> 
@@ -24,3 +26,31 @@
   </div> 
   
 </div>
+
+<!-- MODAL STORIE -->
+<div class="modal fade" id="modalStorieUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title title-modal">Cadastro Storie
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </h5>
+        </div>
+        <div class="modal-body">
+          <form>
+            <input type="hidden" id="id">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Titulo:</label>
+              <input type="text" class="form-control" id="title-storie">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger register" data-dismiss="modal"(click)="updateStorie($event)">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>

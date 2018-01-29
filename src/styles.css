@@ -337,3 +337,13 @@ body {
 .search-link:hover{
   color: red;
 }
+
+.title-modal{
+  font-weight: bold;
+  font-size: 2em;
+  border-bottom: 1px solid #e4e2e2;
+}
+.notify{
+  margin: 5px;
+  margin-bottom: 0;
+}

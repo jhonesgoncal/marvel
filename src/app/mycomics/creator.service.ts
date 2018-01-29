@@ -20,4 +20,14 @@ export class CreatorService{
         return this.http.delete(`${MARVEL_API}/creators/${id}`)
         .map(response => response.json());
     }
+
+    getCreatorMyComic(id){
+        return this.http.get(`${MARVEL_API}/creators/${id}`)
+        .map(response => response.json());
+    }
+
+    updateCreatorMyComic(id,data){
+        return this.http.put(`${MARVEL_API}/creators/${id}`, data)
+        .map(response => response.json());
+    }
 }

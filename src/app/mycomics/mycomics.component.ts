@@ -10,6 +10,7 @@ import {Observable} from "rxjs/Observable";
 import { style } from '@angular/core/src/animation/dsl';
 import { Response } from '@angular/http/src/static_response';
 import { MyComicService } from 'app/mycomics/mycomic.service';
+import {NotificationsService} from 'angular4-notify';
 
 @Component({
   selector: 'mr-mycomics',
@@ -21,21 +22,21 @@ export class MycomicsComponent implements OnInit {
   comics: Comic[];
   myComics = true;
 
-  constructor(private comicsService: MyComicService, private fb: FormBuilder, private router : ActivatedRoute) { }
+  constructor(protected notificationsService: NotificationsService, private comicsService: MyComicService, private fb: FormBuilder, private router : ActivatedRoute) { }
 
    ngOnInit() {
-    let registerComic = document.querySelector("#registerComic");
+    let registerComic = document.querySelector("#registerComic-reg");
     this.comicsService.myComics().subscribe(comic => this.comics = comic);
   }
 
-  getImagem(readerEvt, midia){
+  getImagemRegister(readerEvt, midia){
     let file = readerEvt.target.files[0];
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async() => {
         this.image = await reader.result;
-        const imagePreview = document.querySelector('.image-preview');
-        let img = (<HTMLImageElement>document.querySelector('#imgPreview'));
+        const imagePreview = document.querySelector('.image-preview-reg');
+        let img = (<HTMLImageElement>document.querySelector('#imgPreview-reg'));
         img.src = this.image;
         let imgAlt = (<HTMLElement>img);
         imgAlt.classList.remove('hide');
@@ -49,9 +50,9 @@ export class MycomicsComponent implements OnInit {
   }
 
   registerComic(event){
-     const titleComic  = (<HTMLInputElement>document.querySelector('#title-comic')).value;
-     const imageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
-     const descComic  = (<HTMLInputElement>document.querySelector('#desc-comic')).value;
+     const titleComic  = (<HTMLInputElement>document.querySelector('#title-comic-reg')).value;
+     const imageComic = (<HTMLInputElement>document.querySelector('#image-comic-reg'));
+     const descComic  = (<HTMLInputElement>document.querySelector('#desc-comic-reg')).value;
      const modal = document.querySelector("#exampleModal");
      const extension = imageComic.value.split('.')[1].toLowerCase();
      console.log(this.image)
@@ -67,6 +68,7 @@ export class MycomicsComponent implements OnInit {
 
      this.comicsService.registerComic(data).subscribe(response =>
          this.comicsService.myComics().subscribe(comic => this.comics = comic ));
+         this.notificationsService.addInfo('Comic registrado com sucesso');
      //location.reload();
      this.closeModal()
   }
@@ -84,10 +86,10 @@ export class MycomicsComponent implements OnInit {
   showModal(){
     const modal = document.querySelector("#exampleModal");
     modal.classList.remove('hide');
-    let titleComic  = (<HTMLInputElement>document.querySelector('#title-comic'));
-    let imageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
-    let descComic  = (<HTMLInputElement>document.querySelector('#desc-comic'));
-    const imagePreview = (<HTMLImageElement>document.querySelector('#imgPreview'));
+    let titleComic  = (<HTMLInputElement>document.querySelector('#title-comic-reg'));
+    let imageComic = (<HTMLInputElement>document.querySelector('#image-comic-reg'));
+    let descComic  = (<HTMLInputElement>document.querySelector('#desc-comic-reg'));
+    const imagePreview = (<HTMLImageElement>document.querySelector('#imgPreview-reg'));
 
     titleComic.value = '';
     imageComic.value = '';

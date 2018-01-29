@@ -20,4 +20,14 @@ export class StorieService{
         return this.http.delete(`${MARVEL_API}/stories/${id}`)
         .map(response => response.json());
     }
+
+    getStorieMyComic(id){
+        return this.http.get(`${MARVEL_API}/stories/${id}`)
+        .map(response => response.json());
+    }
+
+    updateStorieMyComic(id, data){
+        return this.http.put(`${MARVEL_API}/stories/${id}`, data)
+        .map(response => response.json());
+    }
 }

@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {NotificationsModule, NotificationsService} from 'angular4-notify';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -61,10 +62,11 @@ import { StorieService } from 'app/mycomics/storie.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    NotificationsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ComicsService, BaseService, MyComicService , CharacterService, CreatorService ,StorieService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [ComicsService, BaseService, MyComicService , NotificationsService, CharacterService, CreatorService ,StorieService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

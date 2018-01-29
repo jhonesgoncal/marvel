@@ -69,11 +69,11 @@ export class MycomicDetailsComponent implements OnInit {
       this.comicsService.includeCharacterMyComic(this.router.snapshot.params['id'], dataInclude).subscribe(response => console.log(response))
      });
       
-      this.closeModal()
+     location.reload();
   }
 
   async registerStorie(event){
-    const titleStorie  = (<HTMLInputElement>document.querySelector('#title-storie')).value;
+    const titleStorie  = (<HTMLInputElement>document.querySelector('#title-storie-register')).value;
     const modal = document.querySelector("#modalCharacter");
 
     const data = {
@@ -87,7 +87,7 @@ export class MycomicDetailsComponent implements OnInit {
      this.comicsService.includeStorierMyComic(this.router.snapshot.params['id'], dataInclude).subscribe(response => console.log(response))
     });
     
-     this.closeModal()
+     location.reload();
  }
 
  async registerCreator(event){
@@ -116,7 +116,7 @@ export class MycomicDetailsComponent implements OnInit {
    
   });
    
-   this.closeModal()
+   location.reload();
 }
 
 getImagemCreator(readerEvt, midia){
@@ -136,28 +136,6 @@ getImagemCreator(readerEvt, midia){
   };
 }
 
-  closeModal(){
-    const modal = document.querySelector("#exampleModal");
-    modal.classList.add('hide');
-    const modalBlackdrop = document.querySelector('.modal-backdrop');
-    modalBlackdrop.classList.remove('fade');
-    modalBlackdrop.classList.remove('in');
-    const body = document.querySelector('body');
-    
-  }
-
-  showModal(){
-    const modal = document.querySelector("#exampleModal");
-    modal.classList.remove('hide');
-    let titleComic  = (<HTMLInputElement>document.querySelector('#title-comic'));
-    let imageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
-    let descComic  = (<HTMLInputElement>document.querySelector('#desc-comic'));
-    const imagePreview = (<HTMLImageElement>document.querySelector('#imgPreview'));
-
-    titleComic.value = '';
-    imageComic.value = '';
-    descComic.value = '';
-    imagePreview.src = '';
-  }
+ 
 
 }

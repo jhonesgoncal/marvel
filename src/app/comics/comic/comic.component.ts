@@ -3,6 +3,7 @@ import { Comic } from './comic.model'
 import {trigger, state, style, transition, animate} from '@angular/animations'
 import { ComicsService } from 'app/comics/comics.service';
 import { MyComicService } from 'app/mycomics/mycomic.service';
+import { NotificationsService } from 'angular4-notify';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class ComicComponent implements OnInit {
   extension: any
   @Input() comic: Comic
   @Input() myComics : boolean
-  constructor(private comicsService : MyComicService) { }
+  constructor(protected notificationsService : NotificationsService,  private comicsService : MyComicService) { }
 
   ngOnInit() {
     console.log(this.myComics)
@@ -41,15 +42,17 @@ export class ComicComponent implements OnInit {
   async editComic(id){
     await this.comicsService.myComicById(id).subscribe(response => this.comic = response);
     let titleComic  = (<HTMLInputElement>document.querySelector('#title-comic-edit'));
-    let imageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
-    let descComic  = (<HTMLInputElement>document.querySelector('#desc-comic'));
-    let img = (<HTMLImageElement>document.querySelector('#imgPreview'));
+    let imageComic = (<HTMLInputElement>document.querySelector('#image-comic-edit'));
+    let descComic  = (<HTMLInputElement>document.querySelector('#desc-comic-edit'));
+    let idComic  = (<HTMLInputElement>document.querySelector('#id'));
+    let img = (<HTMLImageElement>document.querySelector('#imgPreview-edit'));
     let imgAlt = (<HTMLElement>img);
     imgAlt.classList.remove('hide');
     titleComic.value = this.comic.title;
     console.log(this.comic.title)
     descComic.value = this.comic.description;
     img.src = `${this.comic.thumbnail.path }.${this.comic.thumbnail.extension}`;
+    idComic.value = id;
   }
 
   getImagem(readerEvt, midia){
@@ -58,8 +61,8 @@ export class ComicComponent implements OnInit {
     reader.readAsDataURL(file);
     reader.onload = async() => {
         this.image = await reader.result;
-        const imagePreview = document.querySelector('.image-preview');
-        let img = (<HTMLImageElement>document.querySelector('#imgPreview'));
+        const imagePreview = document.querySelector('.image-preview-edit');
+        let img = (<HTMLImageElement>document.querySelector('#imgPreview-edit'));
         img.src = this.image;
         let imgAlt = (<HTMLElement>img);
         imgAlt.classList.remove('hide');
@@ -71,8 +74,9 @@ export class ComicComponent implements OnInit {
 
   updateComic(id,event){
     const titleComic  = (<HTMLInputElement>document.querySelector('#title-comic-edit'));
-    let inputImageComic = (<HTMLInputElement>document.querySelector('#image-comic'));
-    const imageComic = (<HTMLInputElement>document.querySelector('#imgPreview'));
+    let inputImageComic = (<HTMLInputElement>document.querySelector('#image-comic-edit'));
+    const imageComic = (<HTMLInputElement>document.querySelector('#imgPreview-edit'));
+    let idComic  = (<HTMLInputElement>document.querySelector('#id'));
     let extension;
     if(this.isUrl(imageComic.src)){
       this.image = this.comic.thumbnail.path;
@@ -81,8 +85,8 @@ export class ComicComponent implements OnInit {
       extension =  inputImageComic.value.split('.')[1].toLowerCase();
     }
     
-    const descComic  = (<HTMLInputElement>document.querySelector('#desc-comic'));
-    const modal = document.querySelector("#exampleModal");
+    const descComic  = (<HTMLInputElement>document.querySelector('#desc-comic-edit'));
+    const modal = document.querySelector("#exampleModal-edit");
     console.log(this.image)
 
     const data = {
@@ -95,10 +99,10 @@ export class ComicComponent implements OnInit {
     }
     console.log(data)
      
-    this.comicsService.updateMyComoc(this.comic._id,data).subscribe(response =>
-        this.comicsService.myComics().subscribe(comic => console.log(comic) ));
-    location.reload();
+    this.comicsService.updateMyComoc(idComic.value,data).subscribe(response => console.log(response));
     
+    this.notificationsService.addInfo('Comic atualizado com sucesso');
+    location.reload();
     
   }
 

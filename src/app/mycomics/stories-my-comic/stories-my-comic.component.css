@@ -20,12 +20,17 @@
     margin-right: -500px;
 }
 
-.btn-delete{
+.btn-delete,
+.btn-edit{
     margin-bottom: 15px;
     margin-top: 15px;
+    width: 100px;
 }
 
 .card-item-new{
     margin-bottom: 15px;
     height: 85px;
+}
+.btn-edit{
+    margin-right: 5px;
 }
