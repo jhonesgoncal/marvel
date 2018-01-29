@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Comic } from 'app/comics/comic/comic.model';
 import { ComicsService } from 'app/comics/comics.service';
 import { ActivatedRoute } from '@angular/router';
@@ -6,6 +6,7 @@ import { MyComicService } from 'app/mycomics/mycomic.service';
 import { CharacterService } from 'app/mycomics/character.service';
 import { StorieService } from 'app/mycomics/storie.service';
 import { CreatorService } from 'app/mycomics/creator.service';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'mr-mycomic-details',
@@ -23,7 +24,10 @@ export class MycomicDetailsComponent implements OnInit {
               private  characterService : CharacterService, 
               private storieService: StorieService,
               private creatorService : CreatorService,
-              private router : ActivatedRoute) { }
+              private router : ActivatedRoute,
+              public toastr: ToastsManager, vcr: ViewContainerRef) { 
+                this.toastr.setRootViewContainerRef(vcr);
+              }
 
   ngOnInit() {
     this.comicsService.myComicById(this.router.snapshot.params['id']).subscribe(comic => this.comic = comic);
@@ -84,10 +88,18 @@ export class MycomicDetailsComponent implements OnInit {
      const dataInclude = {
        storie: storie._id
      }
-     this.comicsService.includeStorierMyComic(this.router.snapshot.params['id'], dataInclude).subscribe(response => console.log(response))
+     this.comicsService.includeStorierMyComic(this.router.snapshot.params['id'], dataInclude).subscribe(response => {
+      if(response.status == 200){
+        this.toastr.success(response.json().message, 'Sucesso!');
+       }else{
+        this.toastr.error('deu merda', 'Erro!');
+       }
+     })
     });
-    
-     location.reload();
+    setTimeout( () => {
+      location.reload();
+    },700)
+     
  }
 
  async registerCreator(event){

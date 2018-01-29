@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ComicsService } from 'app/comics/comics.service';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,9 @@ import {Observable} from "rxjs/Observable";
 import { style } from '@angular/core/src/animation/dsl';
 import { Response } from '@angular/http/src/static_response';
 import { MyComicService } from 'app/mycomics/mycomic.service';
-import {NotificationsService} from 'angular4-notify';
+import { ToastrService } from 'toastr-ng2';
+import { forEach } from '@angular/router/src/utils/collection';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'mr-mycomics',
@@ -21,12 +23,16 @@ export class MycomicsComponent implements OnInit {
   image: any;
   comics: Comic[];
   myComics = true;
+  notificacao : any
 
-  constructor(protected notificationsService: NotificationsService, private comicsService: MyComicService, private fb: FormBuilder, private router : ActivatedRoute) { }
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,  private comicsService: MyComicService, private fb: FormBuilder, private router : ActivatedRoute) {
+    this.toastr.setRootViewContainerRef(vcr);
+   }
 
    ngOnInit() {
     let registerComic = document.querySelector("#registerComic-reg");
     this.comicsService.myComics().subscribe(comic => this.comics = comic);
+    
   }
 
   getImagemRegister(readerEvt, midia){
@@ -40,9 +46,6 @@ export class MycomicsComponent implements OnInit {
         img.src = this.image;
         let imgAlt = (<HTMLElement>img);
         imgAlt.classList.remove('hide');
-        //img.width = 350;
-        //img.style.maxWidth = "520";
-        //img.height = 400;
         img.setAttribute("style", "max-width='500'")
         imagePreview.innerHTML = '';
         imagePreview.appendChild(imgAlt);
@@ -66,9 +69,17 @@ export class MycomicsComponent implements OnInit {
        }
      }
 
-     this.comicsService.registerComic(data).subscribe(response =>
-         this.comicsService.myComics().subscribe(comic => this.comics = comic ));
-         this.notificationsService.addInfo('Comic registrado com sucesso');
+     this.comicsService.registerComic(data).subscribe(response =>{
+         this.comicsService.myComics().subscribe(comic => this.comics = comic )
+         if(response.status == 201){
+          this.toastr.success(response.json().message, 'Sucesso!');
+         }else{
+          this.toastr.error('deu merda', 'Erro!');
+         }
+      }
+    );
+
+        
      //location.reload();
      this.closeModal()
   }

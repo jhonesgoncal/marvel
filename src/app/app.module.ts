@@ -4,7 +4,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {NotificationsModule, NotificationsService} from 'angular4-notify';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +37,7 @@ import { CreatorService } from 'app/mycomics/creator.service';
 import { StorieService } from 'app/mycomics/storie.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,12 +63,12 @@ import { StorieService } from 'app/mycomics/storie.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ToastModule.forRoot(),
     ReactiveFormsModule,
-    NotificationsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ComicsService, BaseService, MyComicService , NotificationsService, CharacterService, CreatorService ,StorieService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [ComicsService, BaseService, MyComicService , ToastModule, CharacterService, CreatorService ,StorieService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

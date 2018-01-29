@@ -28,7 +28,7 @@ export class ComicComponent implements OnInit {
   extension: any
   @Input() comic: Comic
   @Input() myComics : boolean
-  constructor(protected notificationsService : NotificationsService,  private comicsService : MyComicService) { }
+  constructor( private comicsService : MyComicService) { }
 
   ngOnInit() {
     console.log(this.myComics)
@@ -101,7 +101,6 @@ export class ComicComponent implements OnInit {
      
     this.comicsService.updateMyComoc(idComic.value,data).subscribe(response => console.log(response));
     
-    this.notificationsService.addInfo('Comic atualizado com sucesso');
     location.reload();
     
   }

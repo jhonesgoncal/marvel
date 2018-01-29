@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewContainerRef } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import {ComicsService} from '../../comics/comics.service'
 import { Observable } from 'rxjs/Observable'
 import {trigger, state, style, transition, animate} from '@angular/animations'
 import { StorieService } from 'app/mycomics/storie.service';
+import { ToastsManager } from 'ng2-toastr';
 
 
 @Component({
@@ -27,7 +28,10 @@ export class StoriesMyComicComponent implements OnInit {
   stories: any[] 
   constructor(private comicsService: ComicsService,
               private storieService: StorieService,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              public toastr: ToastsManager, vcr: ViewContainerRef) {
+                this.toastr.setRootViewContainerRef(vcr);
+               }
 
   ngOnInit() {
     this.comicsService.storiesByMyComic(this.route.parent.snapshot.params['id']).subscribe(storie => this.stories = storie);
@@ -35,9 +39,21 @@ export class StoriesMyComicComponent implements OnInit {
 
   async deleteStorie(id){
     console.log(id);
-    await this.storieService.deleteStorieMyComic(id).subscribe(response => console.log(response));
-    location.reload();
+    await this.storieService.deleteStorieMyComic(id).subscribe(response => {
+      console.log(response)
+      if(response.status == 200){
+        this.toastr.success(response.json().message, 'Sucesso!');
+       }else{
+        this.toastr.error('deu merda', 'Erro!');
+       }
+    });
+    setTimeout( () => {
+      location.reload();
+    },500)
   }
+
+  
+    
 
   editStorie(id){
     let titleStorie  = (<HTMLInputElement>document.querySelector('#title-storie'));

@@ -24,7 +24,6 @@ export class MyComicService{
 
     registerComic(data){
         return this.http.post(`${MARVEL_API}/comics`, data)
-          .map(response => response.json())
     }
     
     deleteComic(id){
@@ -54,7 +53,7 @@ export class MyComicService{
 
     includeStorierMyComic(id, data){
         return this.http.patch(`${MARVEL_API}/comics/${id}/stories`, data)
-        .map(response => response.json());
+        
     }
 
     includeCreatorMyComic(id, data){
