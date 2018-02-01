@@ -57,9 +57,10 @@ export class MycomicsComponent implements OnInit {
      const imageComic = (<HTMLInputElement>document.querySelector('#image-comic-reg'));
      const descComic  = (<HTMLInputElement>document.querySelector('#desc-comic-reg')).value;
      const modal = document.querySelector("#exampleModal");
-     const extension = imageComic.value.split('.')[1].toLowerCase();
-     console.log(this.image)
-
+     let extension;
+     if(imageComic.value.split('.')[1] !== undefined)
+       extension = imageComic.value.split('.')[1].toLowerCase();
+       
      const data = {
        title: titleComic,
        description: descComic,
@@ -69,19 +70,25 @@ export class MycomicsComponent implements OnInit {
        }
      }
 
-     this.comicsService.registerComic(data).subscribe(response =>{
+     this.comicsService.registerComic(data).subscribe(result =>{
          this.comicsService.myComics().subscribe(comic => this.comics = comic )
-         if(response.status == 201){
-          this.toastr.success(response.json().message, 'Sucesso!');
-         }else{
-          this.toastr.error('deu merda', 'Erro!');
-         }
-      }
+          this.toastr.success(result.json().message, 'Sucesso!');
+          if(result.status == 201)
+            setTimeout(() => {
+              location.reload();
+            }, 500);
+        },
+        error => {
+          for(var i = 0; i < error.json().length; i++){
+            this.toastr.error(error.json()[i].message, 'Erro!');
+          }
+        }
+        
     );
 
         
-     //location.reload();
-     this.closeModal()
+     
+     
   }
 
   closeModal(){
